@@ -1,4 +1,14 @@
-preguntas = ["Admitis que sofi te ama mas?", "vas a aprender a asar antes de que termine el 2012?", "vas a cocinarle a sofi con frecuencia?", "Amas a sofi mas que a cualquier otra mujer?", "Te gustaria tener MAS de un hijo con sofi?", "vas a dejar de hacerle cosquilas a sofi?", "sos feliz con sofi?", "vas a ver muchas series con sofi?", "Te gusta ver peliculas romanticas con Sofi?", "vas a aguantar a Sofi toda la vida", "Le vas a tener paciencia a sofi a pesar de todo?" ]
+preguntas = ["Admitis que sofi te ama mas?",
+             "vas a aprender a asar antes de que termine el 2012?",
+             "vas a cocinarle a sofi con frecuencia?",
+             "Amas a sofi mas que a cualquier otra mujer?",
+             "Te gustaria tener MAS de un hijo con sofi?",
+             "vas a dejar de hacerle cosquilas a sofi?",
+             "sos feliz con sofi?",
+             "vas a ver muchas series con sofi?",
+             "Te gusta ver peliculas romanticas con Sofi?",
+             "vas a aguantar a Sofi toda la vida",
+             "Le vas a tener paciencia a sofi a pesar de todo?"]
 
 import random
 
