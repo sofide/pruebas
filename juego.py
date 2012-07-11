@@ -14,6 +14,9 @@ import random
 
 
 def dibujarMapa(mapa):
+    """Dibuja el mapa
+
+    mapa: mapa actual para dibujar"""
     print "Esta es tu posicion actual en el mapa"
     for linea in mapa:
         for elemento in linea:
@@ -26,7 +29,8 @@ def preguntar(preguntas):
     print random.choice(preguntas) + "\n" + "a. Si" + "\n" + "b. No"
     respuesta = raw_input()
     while respuesta != "a" and respuesta != "b":
-        print "La respuesta ingresada no es valida. Por favor ingrese nuevamente su respuesta"
+        print "La respuesta ingresada no es valida. " \
+              "Por favor ingrese nuevamente su respuesta"
         respuesta = raw_input()
 
     if respuesta == "a":
