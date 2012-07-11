@@ -2,12 +2,14 @@ preguntas = ["Admitis que sofi te ama mas?", "vas a aprender a asar antes de que
 
 import random
 
+
 def dibujarMapa(mapa):
     print "Esta es tu posicion actual en el mapa"
     for linea in mapa:
         for elemento in linea:
             print elemento + "\t",
         print "\n"
+
 
 def preguntar(preguntas):
     print "Antes de moverte deberas responder la siguiente pregunta"
@@ -31,16 +33,15 @@ def detectarPosicion(mapaActual, jugador):
     i = 0
     while i < len(mapaActual):
         j = 0
-        while j <len(mapaActual[i]):
+        while j < len(mapaActual[i]):
             if mapaActual[i][j] == jugador:
-                posicion = [i,j]
+                posicion = [i, j]
                 return posicion
             j = j + 1
         i = i + 1
 
+
 def moverse(direccion, posicionActual, mapaActual, jugador):
-
-
     if direccion == "a":
         if posicionActual[0] == 0:
             print "No es posible moverse hacia arriba!" + "\n" + "Sera movido automaticamente hacia la derecha"
@@ -56,7 +57,7 @@ def moverse(direccion, posicionActual, mapaActual, jugador):
             return moverse("a", posicionActual, mapaActual, jugador)
         else:
             mapaActual[posicionActual[0]][posicionActual[1]] = "x"
-            mapaActual[posicionActual[0]][posicionActual[1]+1] = jugador
+            mapaActual[posicionActual[0]][posicionActual[1] + 1] = jugador
             return mapaActual
     else:
         print "la opcion ingresada no es correcta"
@@ -67,7 +68,8 @@ def jugar(preguntas):
     print "Bienvenido a este maravilloso juego!", "\n", "Para comenzar, por favor ingrese aqui su nombre (preferentemente en letras minusculas): ",
     jugador = raw_input()
 
-    mapa = [["x", "x", "x", "sofi"], ["x", "x", "x", "x"], ["x", "x", "x", "x"], [jugador, "x", "x", "x"]]
+    mapa = [["x", "x", "x", "sofi"], ["x", "x", "x", "x"],
+            ["x", "x", "x", "x"], [jugador, "x", "x", "x"]]
 
     print "\n", "Ok, " + jugador,
 
@@ -79,17 +81,18 @@ def jugar(preguntas):
 
     print "El objetivo del juego es superar los diferentes desafios para llegar hasta donde esta sofi y conquistarla!" + "\n" + "Debes pensar bien tus respuestas, ya que una vez elegida una opcion, no puedes dar marcha atras..."
 
-    while detectarPosicion(mapa,jugador) != [0, 3]:
+    while detectarPosicion(mapa, jugador) != [0, 3]:
         respuesta = preguntar(preguntas)
         if respuesta == "perdio":
             print "volvelo a intentar!"
             jugar(preguntas)
             return
-        dibujarMapa(moverse(respuesta,detectarPosicion(mapa, jugador), mapa, jugador))
+        dibujarMapa(moverse(respuesta, detectarPosicion(mapa, jugador), mapa, jugador))
     if jugador == "juan" or jugador == "fisa" or jugador == "fifi" or jugador == "fisa" or jugador == "ashton kutcher" or jugador == "roger federer":
         print "Felicitaciones! Lograste conquistar a Sofi!" + "\n" + "Si tus respuestas fueron sinceras, seguramente van a ser muy felices juntos para siempre!"
     else:
         print "Lo siento... Superaste todas las pruebas, pero no sos la persona que sofi esta esperando..."
+
 jugar(preguntas)
 
 
