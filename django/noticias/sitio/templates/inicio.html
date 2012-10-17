@@ -1,0 +1,9 @@
+<h1>Noticias.com</h1>
+<p>bienvenido!</p>
+{{visitas}}
+
+{% for noticia in lista_noticias %}
+    <h3>{{ noticia.fecha }} {{ noticia.titulo }}</h3>
+    <p>{{ noticia.seccion.nombre }}</p>
+    <p>{{ noticia.texto }}</p>
+{% endfor %}
