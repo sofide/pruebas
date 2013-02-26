@@ -5,6 +5,10 @@ from django.conf.urls import patterns, include, url
 # admin.autodiscover()
 
 urlpatterns = patterns('',
+    url(r'^$', 'fotos.view.home'),
+    url(r'^visor/$', 'fotos.view.visor'),
+    url(r'^acomodador/$', 'fotos.view.acomodador'),
+
     # Examples:
     # url(r'^$', 'org_fotos.views.home', name='home'),
     # url(r'^org_fotos/', include('org_fotos.foo.urls')),
