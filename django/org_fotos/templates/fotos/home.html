@@ -1,2 +1,15 @@
 <h1> Bienvenido al super organizador de fotos miluemium
 premium archi super wuau </h1>
+
+<form action="/visor/" method="get">
+
+    <h3> Ingrese la url de la carpeta que desea organizar! </h3>
+
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+    <input type="text" name="ruta">
+
+    <input type="submit" value="Organizar!" />
+
+</form>
+
