@@ -5,9 +5,9 @@ from django.conf.urls import patterns, include, url
 # admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^$', 'fotos.view.home'),
-    url(r'^visor/$', 'fotos.view.visor'),
-    url(r'^acomodador/$', 'fotos.view.acomodador'),
+    url(r'^$', 'fotos.views.home'),
+    url(r'^visor/$', 'fotos.views.visor'),
+    url(r'^acomodador/$', 'fotos.views.acomodador'),
 
     # Examples:
     # url(r'^$', 'org_fotos.views.home', name='home'),

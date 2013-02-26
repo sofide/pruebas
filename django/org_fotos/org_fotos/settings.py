@@ -106,6 +106,7 @@ ROOT_URLCONF = 'org_fotos.urls'
 WSGI_APPLICATION = 'org_fotos.wsgi.application'
 
 TEMPLATE_DIRS = (
+    '/home/sofi/Devel/pruebas/django/org_fotos/templates'
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
