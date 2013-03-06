@@ -6,6 +6,7 @@ from django.conf.urls import patterns, include, url
 
 urlpatterns = patterns('',
     url(r'^$', 'fotos.views.home'),
+    url(r'^manejador_rutas/$', 'fotos.views.manejador_rutas')
     url(r'^visor/$', 'fotos.views.visor'),
     url(r'^acomodador/$', 'fotos.views.acomodador'),
     url(r'^imagen/$', 'fotos.views.imagen')

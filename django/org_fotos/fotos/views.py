@@ -8,7 +8,8 @@ import shutil
 def home(request):
     return render_to_response('fotos/home.html')
 
-def visor(request):
+
+def manejador_rutas(request):
     ruta = request.GET['ruta']
     if ruta == '':
         return render_to_response('fotos/home.html', {
@@ -18,16 +19,13 @@ def visor(request):
     else:
         fotos = glob.glob(ruta+'*.jpg')
 
-        if fotos == []:
+    if fotos == []:
             return render_to_response('fotos/home.html', {
             'error_message': "No hay ninguna foto en la carpeta especificada",
             })
 
-        if not os.path.isdir('temp'):
-            os.mkdir('temp')
+    nombreFoto = os.path.basename(fotos[0])
+    return render_to_response('fotos/manejador_rutas.html', {'foto': nombreFoto})
 
-        shutil.copy(fotos[0], 'temp')
-        nombreFoto = os.path.basename(fotos[0])
-        context = {'foto': nombreFoto}
-        return render(request, 'fotos/visor.html', context)
 
+def visor(request):
