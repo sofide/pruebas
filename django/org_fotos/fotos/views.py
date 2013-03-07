@@ -66,5 +66,7 @@ def acomodador(request):
     if not 'ubicaciones_recientes' in request.session:
         request.session['ubicaciones_recientes'] = []
 
-    request.session['ubicaciones_recientes'].append(nueva_ruta)
+    if not nueva_ruta in request.session['ubicaciones_recientes']:
+        request.session['ubicaciones_recientes'].append(nueva_ruta)
+
     return HttpResponseRedirect(reverse('visor'))
