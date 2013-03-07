@@ -41,3 +41,7 @@ def visor(request):
 def imagen(request, imagen):
     image_data = open(request.session['carpeta_acomodar'] + imagen, "rb").read()
     return HttpResponse(image_data, mimetype="image/jpg")
+
+
+def acomodador(request):
+    pass
