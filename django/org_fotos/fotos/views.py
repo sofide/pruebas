@@ -32,6 +32,7 @@ def manejador_rutas(request):
 def visor(request):
     lista_fotos = glob.glob(request.session['carpeta_acomodar'] + '*.jpg')
     nombreFoto = os.path.basename(lista_fotos[0])
+    request.session["foto"] = nombreFoto
     context = {
         'foto': nombreFoto,
         'carpeta_actual': request.session['carpeta_acomodar']
@@ -51,4 +52,19 @@ def imagen(request, imagen):
 
 
 def acomodador(request):
-    pass
+    nueva_ruta = request.GET['nueva_ruta']
+    if nueva_ruta == '':
+        return HttpResponseRedirect(reverse('visor'))
+
+    if not os.path.isdir(nueva_ruta):
+        os.mkdir(nueva_ruta)
+
+    shutil.move(
+        request.session['carpeta_acomodar'] + request.session["foto"],
+        nueva_ruta
+    )
+    if not 'ubicaciones_recientes' in request.session:
+        request.session['ubicaciones_recientes'] = []
+
+    request.session['ubicaciones_recientes'].append(nueva_ruta)
+    return HttpResponseRedirect(reverse('visor'))
