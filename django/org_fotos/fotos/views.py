@@ -24,7 +24,7 @@ def manejador_rutas(request):
             'error_message': "No hay ninguna foto en la carpeta especificada",
             })
     request.session['carpeta_acomodar'] = ruta
-    return HttpResponseRedirect(reverse('fotos:visor'))
+    return HttpResponseRedirect(reverse('visor'))
 
 
 def visor(request):
