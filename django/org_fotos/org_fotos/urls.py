@@ -7,9 +7,9 @@ from django.conf.urls import patterns, include, url
 urlpatterns = patterns('',
     url(r'^$', 'fotos.views.home'),
     url(r'^manejador_rutas/$', 'fotos.views.manejador_rutas'),
-    url(r'^visor/$', 'fotos.views.visor'),
+    url(r'^visor/$', 'fotos.views.visor', name='visor'),
     url(r'^acomodador/$', 'fotos.views.acomodador'),
-    url(r'^imagen/(?P<imagen>[\w\s\.-]/$', 'fotos.views.imagen')
+    url(r'^imagen/(?P<imagen>[\w\s\.-]+)/$', 'fotos.views.imagen', name='imagen')
 
     # Examples:
     # url(r'^$', 'org_fotos.views.home', name='home'),
