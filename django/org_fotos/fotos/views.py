@@ -13,29 +13,35 @@ def home(request):
 def manejador_rutas(request):
     ruta = request.GET['ruta']
     if ruta == '':
-        return render_to_response('error_rutas.html', {
-            'error_message': "No ingreso la ruta!!!",
-            })
+        return render_to_response(
+            'error_rutas.html',
+            {'error_message': "No ingreso la ruta!!!"},
+        )
 
     lista_fotos = glob.glob(ruta + '*.jpg')
 
     if lista_fotos == []:
-            return render_to_response('error_rutas.html', {
-            'error_message': "No hay ninguna foto en la carpeta especificada",
-            })
+        return render_to_response(
+            'error_rutas.html',
+            {'error_message': "No hay ninguna foto en la carpeta especificada",}
+        )
     request.session['carpeta_acomodar'] = ruta
     return HttpResponseRedirect(reverse('visor'))
 
 
 def visor(request):
     if 'carpeta_acomodar' not in request.session:
-        return render_to_response('home.html', {
-            'error_message': "Por favor, ingrese la ruta de la carpeta a acomodar",
-            })
+        return render_to_response(
+            'home.html',
+            {'error_message': "Por favor, ingrese la ruta de la carpeta a acomodar",}
+        )
+
     lista_fotos = glob.glob(request.session['carpeta_acomodar'] + '*.jpg')
     nombreFoto = os.path.basename(lista_fotos[0])
-    return render_to_response('visor.html', {
-        'foto': nombreFoto})
+    return render_to_response(
+        'visor.html',
+        {'foto': nombreFoto}
+    )
 
 
 def imagen(request, imagen):
