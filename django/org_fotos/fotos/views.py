@@ -13,14 +13,14 @@ def home(request):
 def manejador_rutas(request):
     ruta = request.GET['ruta']
     if ruta == '':
-        return render_to_response('home.html', {
+        return render_to_response('error_rutas.html', {
             'error_message': "No ingreso la ruta!!!",
             })
 
     lista_fotos = glob.glob(ruta + '*.jpg')
 
     if lista_fotos == []:
-            return render_to_response('home.html', {
+            return render_to_response('error_rutas.html', {
             'error_message': "No hay ninguna foto en la carpeta especificada",
             })
     request.session['carpeta_acomodar'] = ruta
