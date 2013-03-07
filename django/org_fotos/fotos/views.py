@@ -30,17 +30,18 @@ def manejador_rutas(request):
 
 
 def visor(request):
-    if 'carpeta_acomodar' not in request.session:
-        return render_to_response(
-            'home.html',
-            {'error_message': "Por favor, ingrese la ruta de la carpeta a acomodar",}
-        )
-
     lista_fotos = glob.glob(request.session['carpeta_acomodar'] + '*.jpg')
     nombreFoto = os.path.basename(lista_fotos[0])
+    context = {
+        'foto': nombreFoto,
+        'carpeta_actual': request.session['carpeta_acomodar']
+    }
+    if 'ubicaciones_recientes' in request.session:
+        context['ubicaciones'] = request.session['ubicaciones_recientes']
+
     return render_to_response(
         'visor.html',
-        {'foto': nombreFoto}
+        context
     )
 
 

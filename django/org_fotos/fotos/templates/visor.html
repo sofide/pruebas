@@ -1,5 +1,28 @@
 <h1> Estas son las fotos de tu carpeta!!! </h1>
 <h2> {{ foto }} </h2>
+<h3> Esta imagen se encuentra acutalmente en {{ carpeta_actual }} /n
+
+A donde desea moverla? </h3>
+
+<form action="/acomodador" method="get">
+
+    {% if ubicaciones %}
+        <ul>
+        {% for u in ubicaciones %}
+            <input type="radio" name="nueva_ruta" value= {{u}}>
+        {% endfor %}
+        <input type="radio" name="nueva_ruta" value=<input type="text"> >
+        </ul>
+
+    {% else %}
+        <input type="text" name="nueva_ruta">
+
+    {% endif %}
+
+    <input type="submit" value="Acomodar"/>
+</form>
+
 
 <img src='{% url imagen imagen=foto %}'>
+
 
