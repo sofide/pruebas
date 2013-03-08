@@ -62,9 +62,12 @@ def imagen(request, imagen):
 
 
 def acomodador(request):
-    nueva_ruta = request.GET['nueva_ruta']
+    nueva_ruta = request.GET['nueva_ruta'].strip()
     if nueva_ruta == '':
         return HttpResponseRedirect(reverse('visor'))
+
+    if nueva_ruta[-1] != '/':
+        nueva_ruta = nueva_ruta + '/'
 
     if not os.path.isdir(nueva_ruta):
         os.mkdir(nueva_ruta)
