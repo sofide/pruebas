@@ -11,12 +11,15 @@ def home(request):
 
 
 def manejador_rutas(request):
-    ruta = request.GET['ruta']
+    ruta = request.GET['ruta'].strip()
     if ruta == '':
         return render_to_response(
             'error_rutas.html',
             {'error_message': "No ingreso la ruta!!!"},
         )
+
+    if ruta[-1] != '/':
+        ruta = ruta + '/'
 
     lista_fotos = glob.glob(ruta + '*.jpg')
 
@@ -31,6 +34,13 @@ def manejador_rutas(request):
 
 def visor(request):
     lista_fotos = glob.glob(request.session['carpeta_acomodar'] + '*.jpg')
+
+    if lista_fotos == []:
+        return render_to_response(
+            'visor.html',
+            {'error_message': 'No hay mas fotos en esta carpeta'}
+        )
+
     nombreFoto = os.path.basename(lista_fotos[0])
     request.session["foto"] = nombreFoto
     context = {

@@ -1,27 +1,50 @@
 <h1> Archi super wauuu!!! </h1>
-<h2> {{ foto }} </h2>
-<h3> Esta imagen se encuentra acutalmente en {{ carpeta_actual }} </h3>
 
-<h3> A donde desea moverla? </h3>
+{% if error_message %}
+    <form action="/" method="get">
+        <h3> {{ error_message}} </h3>
+        <input type="submit" value="Volver a la home"/>
+    </form>
 
-<form action="/acomodador" method="get">
+{% else %}
+
+
+    <h2> {{ foto }} </h2>
+    <h3> Esta imagen se encuentra acutalmente en {{ carpeta_actual }} </h3>
+
+    <h3> A donde desea moverla? </h3>
+
+    <form action="/acomodador" method="get">
+
+        <h4> Ingrese la ruta de la carpeta donde desea guardar la imagen </h4>
+
+        <input type="text" name="nueva_ruta"/>
+
+        <input type="submit" value="Acomodar"/>
+
+    </form>
+
 
     {% if ubicaciones %}
 
-        {% for u in ubicaciones %}
-            <input type="radio" name="nueva_ruta" value="{{ u }}"> {{ u }} <br>
-        {% endfor %}
+        <form action="/acomodador" method="get">
+            <h4> O seleccione alguna de las siguientes carpetas </h4>
 
-        <input type="radio" name="nueva_ruta">  <input type="text" name="nueva_ruta"> <br>
+            {% for u in ubicaciones %}
+                <h3> {{ u }} </h3>
+            {% endfor %}
 
+            {% for u in ubicaciones %}
+                <input type="radio" name="nueva_ruta" value="{{ u }}"/> {{ u }} <br>
+            {% endfor %}
 
-    {% else %}
-        <input type="text" name="nueva_ruta">
+        <input type="submit" value="Acomodar"/>
+
+        </form>
 
     {% endif %}
 
-    <input type="submit" value="Acomodar"/>
-</form>
 
+    <img src='{% url imagen imagen=foto %}'>
 
-<img src='{% url imagen imagen=foto %}'>
+{% endif %}
