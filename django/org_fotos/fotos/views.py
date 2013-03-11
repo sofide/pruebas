@@ -4,6 +4,7 @@ from django.core.urlresolvers import reverse
 import glob
 import os
 import shutil
+from fotos.models import Carpeta
 
 
 def home(request):
@@ -20,6 +21,9 @@ def manejador_rutas(request):
 
     if ruta[-1] != '/':
         ruta = ruta + '/'
+
+    c = Carpeta(ruta = ruta, tipo = 'origen')
+    c.save()
 
     lista_fotos = glob.glob(ruta + '*.jpg')
 
