@@ -87,3 +87,11 @@ def acomodador(request):
         c.save()
 
     return HttpResponseRedirect(reverse('visor'))
+
+def eliminar(request, carpeta_id, tipo):
+    c = Carpeta.objects.filter(id=carpeta_id)
+    c.delete()
+    if tipo == 'destino':
+        return HttpResponseRedirect(reverse('visor'))
+    else:
+        return HttpResponseRedirect(reverse('home'))
