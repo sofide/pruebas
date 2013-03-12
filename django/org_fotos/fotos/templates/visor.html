@@ -14,7 +14,7 @@
 
     <h3> A donde desea moverla? </h3>
 
-    <form action="/acomodador" method="get">
+    <form action="/acomodador/" method="get">
 
         <h4> Ingrese la ruta de la carpeta donde desea guardar la imagen </h4>
 
@@ -27,7 +27,7 @@
     <h4> Usado recientemente: </h4>
     <ul>
     {% for c in carpetas %}
-        <li><a href='/acomodador?nueva_ruta={{ c.ruta }}'> {{ c.ruta }} </a>
+        <li><a href='/acomodador/?nueva_ruta={{ c.ruta }}'> {{ c.ruta }} </a>
         <a href="/eliminar/{{ c.id }}/destino">   Eliminar </a></li></li>
     {% endfor %}
     </ul>
