@@ -51,10 +51,9 @@ def visor(request):
     request.session["foto"] = nombreFoto
     context = {
         'foto': nombreFoto,
-        'carpeta_actual': request.session['carpeta_acomodar']
+        'carpeta_actual': request.session['carpeta_acomodar'],
+        'carpetas': Carpeta.objects.filter(tipo='destino')
     }
-    if 'ubicaciones_recientes' in request.session:
-        context['ubicaciones'] = request.session['ubicaciones_recientes']
 
     return render_to_response(
         'visor.html',
@@ -82,11 +81,9 @@ def acomodador(request):
         request.session['carpeta_acomodar'] + request.session["foto"],
         nueva_ruta
     )
-    if not 'ubicaciones_recientes' in request.session:
-        request.session['ubicaciones_recientes'] = []
 
-    if not nueva_ruta in request.session['ubicaciones_recientes']:
-        request.session['ubicaciones_recientes'].append(nueva_ruta)
-        request.session.modified = True
+    if Carpeta.objects.filter(ruta=nueva_ruta, tipo='destino').count() == 0:
+        c = Carpeta(ruta=nueva_ruta, tipo='destino')
+        c.save()
 
     return HttpResponseRedirect(reverse('visor'))

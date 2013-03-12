@@ -24,26 +24,10 @@
 
     </form>
 
-
-    {% if ubicaciones %}
-
-        <form action="/acomodador" method="get">
-            <h4> O seleccione alguna de las siguientes carpetas </h4>
-
-            {% for u in ubicaciones %}
-                <h3> {{ u }} </h3>
-            {% endfor %}
-
-            {% for u in ubicaciones %}
-                <input type="radio" name="nueva_ruta" value="{{ u }}"/> {{ u }} <br>
-            {% endfor %}
-
-        <input type="submit" value="Acomodar"/>
-
-        </form>
-
-    {% endif %}
-
+    <h4> Usado recientemente: </h4>
+    {% for c in carpetas %}
+        <a href='/acomodador?nueva_ruta={{ c.ruta }}'> {{ c.ruta }} </a>
+    {% endfor %}
 
     <img src='{% url imagen imagen=foto %}'>
 
