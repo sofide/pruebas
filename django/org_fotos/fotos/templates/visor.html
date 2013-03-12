@@ -25,9 +25,11 @@
     </form>
 
     <h4> Usado recientemente: </h4>
+    <ul>
     {% for c in carpetas %}
-        <a href='/acomodador?nueva_ruta={{ c.ruta }}'> {{ c.ruta }} </a>
+        <li><a href='/acomodador?nueva_ruta={{ c.ruta }}'> {{ c.ruta }} </a></li>
     {% endfor %}
+    </ul>
 
     <img src='{% url imagen imagen=foto %}'>
 

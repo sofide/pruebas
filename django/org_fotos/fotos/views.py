@@ -8,8 +8,10 @@ from fotos.models import Carpeta
 
 
 def home(request):
-    return render_to_response('home.html',
-                             {'carpetas': Carpeta.objects.filter(tipo='origen')})
+    return render_to_response(
+        'home.html',
+        {'carpetas': Carpeta.objects.filter(tipo='origen').order_by('ruta')}
+    )
 
 
 def manejador_rutas(request):
@@ -52,7 +54,7 @@ def visor(request):
     context = {
         'foto': nombreFoto,
         'carpeta_actual': request.session['carpeta_acomodar'],
-        'carpetas': Carpeta.objects.filter(tipo='destino')
+        'carpetas': Carpeta.objects.filter(tipo='destino').order_by('ruta')
     }
 
     return render_to_response(
@@ -87,6 +89,7 @@ def acomodador(request):
         c.save()
 
     return HttpResponseRedirect(reverse('visor'))
+
 
 def eliminar(request, carpeta_id, tipo):
     c = Carpeta.objects.filter(id=carpeta_id)
