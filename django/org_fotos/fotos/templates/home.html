@@ -16,6 +16,7 @@ premium archi super wuau </h1>
 <h4> Usado recientemente: </h4>
 <ul>
 {% for c in carpetas %}
-    <li><a href="/manejador_rutas?ruta={{ c.ruta }}""> {{ c.ruta }}  </a></li>
+    <li><a href="/manejador_rutas?ruta={{ c.ruta }}""> {{ c.ruta }}  </a>
+        <a href="/eliminar/{{ c.id }}/origen">   Eliminar </a></li>
 {% endfor %}
 </ul>
