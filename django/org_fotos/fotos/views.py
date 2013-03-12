@@ -8,7 +8,8 @@ from fotos.models import Carpeta
 
 
 def home(request):
-    return render_to_response('home.html')
+    return render_to_response('home.html',
+                             {'carpetas': Carpeta.objects.filter(tipo='origen')})
 
 
 def manejador_rutas(request):
@@ -22,15 +23,16 @@ def manejador_rutas(request):
     if ruta[-1] != '/':
         ruta = ruta + '/'
 
-    c = Carpeta(ruta = ruta, tipo = 'origen')
-    c.save()
+    if Carpeta.objects.filter(ruta=ruta, tipo='origen').count() == 0:
+        c = Carpeta(ruta=ruta, tipo='origen')
+        c.save()
 
     lista_fotos = glob.glob(ruta + '*.jpg')
 
     if lista_fotos == []:
         return render_to_response(
             'error_rutas.html',
-            {'error_message': "No hay ninguna foto en la carpeta especificada",}
+            {'error_message': "No hay ninguna foto en la carpeta especificada"}
         )
     request.session['carpeta_acomodar'] = ruta
     return HttpResponseRedirect(reverse('visor'))
