@@ -27,8 +27,8 @@
     <h4> Usado recientemente: </h4>
     <ul>
     {% for c in carpetas %}
-        <li><a href='/acomodador/?nueva_ruta={{ c.ruta }}'> {{ c.ruta }} </a>
-        <a href="/eliminar/{{ c.id }}/destino">   Eliminar </a></li></li>
+        <li><a href='/acomodador/?nueva_ruta={{ c.ruta }}'>{{ c.ruta }}</a> 
+        <a href="/eliminar/{{ c.id }}/destino">Eliminar</a></li></li>
     {% endfor %}
     </ul>
 
