@@ -9,7 +9,7 @@ urlpatterns = patterns('',
     url(r'^manejador_rutas/$', 'fotos.views.manejador_rutas'),
     url(r'^visor/$', 'fotos.views.visor', name='visor'),
     url(r'^acomodador/$', 'fotos.views.acomodador'),
-    url(r'^imagen/(?P<imagen>[\w\s\.-]+)/$', 'fotos.views.imagen', name='imagen'),
+    url(r'^imagen/(?P<imagen>[\(\)\w\s\.-]+)/$', 'fotos.views.imagen', name='imagen'),
     url(r'^eliminar/(?P<carpeta_id>\d+)/(?P<tipo>\w+)/$', 'fotos.views.eliminar')
 
     # Examples:
